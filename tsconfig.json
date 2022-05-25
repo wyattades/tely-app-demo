@@ -1,0 +1,14 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strictNullChecks": true,
+    "noUncheckedIndexedAccess": true,
+    "baseUrl": ".",
+    "paths": {
+      "app/*": ["./packages/app/*"],
+      "native/*": ["./packages/native/*"],
+      "web/*": ["./packages/web/*"]
+    }
+  },
+  "include": ["**/*.ts", "**/*.tsx"]
+}
