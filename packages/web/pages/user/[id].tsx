@@ -6,7 +6,8 @@ export const getServerSideProps = wrapGSSP(async ({ params, ctx }) => {
 
   const userId = params!.id as string;
 
-  await ctx.prefetchQuery(getUser, { user_id: userId });
+  // TODO-blitz-bug: `prefetchInfiniteQuery` is switched with `prefetchQuery`
+  await ctx.prefetchInfiniteQuery(getUser, { userId }, {});
 
   console.log('Prefetched user:', userId);
 

@@ -1,5 +1,4 @@
 import { createParam } from 'solito';
-import { Link as SolitoLink } from 'solito/link';
 import {
   Center,
   Heading,
@@ -12,6 +11,7 @@ import {
 import getUser from 'web/integrations/queries/getUser';
 import { useRpcQuery } from 'web/lib/rpc';
 import { ColorModeSwitch } from 'app/components/ColorModeSwitch';
+import { Link } from 'app/components/Link';
 
 const { useParam } = createParam<{ id: string }>();
 
@@ -26,10 +26,10 @@ export function UserDetailScreen() {
       _dark={{ bg: 'blueGray.900' }}
       _light={{ bg: 'blueGray.50' }}
     >
-      <Heading>Hey there, {user.name}! 👋</Heading>
+      <Heading fontSize="3xl">Hey there, {user.name}! 👋</Heading>
       <Text>Id: {user.id}</Text>
       <Box mt="6">
-        <SolitoLink href="/">
+        <Link href="/">
           <Button
             pointerEvents="none"
             leftIcon={<ChevronLeftIcon size="xs" />}
@@ -38,7 +38,7 @@ export function UserDetailScreen() {
           >
             Go Back
           </Button>
-        </SolitoLink>
+        </Link>
       </Box>
       <ColorModeSwitch />
     </Center>

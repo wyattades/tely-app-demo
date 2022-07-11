@@ -14,5 +14,5 @@ export const useLocation = () => {
 export const NavigationProvider = ({
   children,
 }: {
-  children: React.ReactElement;
+  children: React.ReactNode;
 }) => <>{children}</>;

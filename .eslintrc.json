@@ -1,0 +1,17 @@
+{
+  "extends": "@wyattades/eslint-config",
+  "parserOptions": {
+    "project": [
+      "tsconfig.json",
+      "packages/app/tsconfig.json",
+      "packages/native/tsconfig.json",
+      "packages/web/tsconfig.json"
+    ]
+  },
+  "rules": {
+    "import/no-extraneous-dependencies": "off" // TEMP
+  },
+  "settings": {
+    "import/internal-regex": "^(app|web|native)/"
+  }
+}

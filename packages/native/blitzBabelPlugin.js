@@ -1,5 +1,5 @@
 const loaderUtils = require('@blitzjs/rpc/dist/chunks/loader-utils.cjs');
-const path = require('path');
+const pathLib = require('path');
 const babelTemplate = require('@babel/template').default;
 
 // Translated from webpack loader to babel plugin.
@@ -8,7 +8,7 @@ const babelTemplate = require('@babel/template').default;
 function transformBlitzRpcResolverClient(id, root) {
   loaderUtils.assertPosixPath(id);
   loaderUtils.assertPosixPath(root);
-  const resolverFilePath = '/' + path.posix.relative(root, id);
+  const resolverFilePath = '/' + pathLib.posix.relative(root, id);
   loaderUtils.assertPosixPath(resolverFilePath);
   const routePath =
     loaderUtils.convertPageFilePathToRoutePath(resolverFilePath);
@@ -32,7 +32,7 @@ function transformBlitzRpcResolverClient(id, root) {
  * @param {babel} babel
  * @returns {{ visitor: import('@babel/traverse').Visitor }}
  */
-module.exports = function blitzBabelPlugin(babel) {
+module.exports = function blitzBabelPlugin(_babel) {
   return {
     visitor: {
       Program: {

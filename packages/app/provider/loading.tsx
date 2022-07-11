@@ -11,6 +11,8 @@ const LoadingFallback: React.FC = () => {
   );
 };
 
-export const SuspenseLoading: React.FC = ({ children }) => {
+export const SuspenseLoading: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   return <Suspense fallback={<LoadingFallback />}>{children}</Suspense>;
 };

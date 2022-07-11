@@ -9,6 +9,9 @@ const getUser = async ({ userId }: { userId: string }, _ctx: Ctx) => {
   };
 };
 
+// TODO-blitz-bug: blitz does not automatically determine the queryKey server-side
+getUser._routePath = '/api/rpc/getUser';
+
 export type UserData = InferPromiseReturn<typeof getUser>;
 
 export default getUser;

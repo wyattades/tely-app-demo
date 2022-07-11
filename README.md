@@ -6,8 +6,8 @@ A truly cross-platform app. Build UI screens, components, logic, and even backen
 
 1. Clone the repo
 2. Run `yarn` in the root directory
-3. - *web*: Run the web dev server (Next.js): `yarn web`
-   - *native*: Run the native app dev server (Expo): `yarn native`
+3. - _web_: Run the web dev server (Next.js): `yarn web`
+   - _native_: Run the native app dev server (Expo): `yarn native`
      - This will prompt you to connect a device or emulator, but Expo will walk you through this.
      - In another terminal, run `yarn web`. This will be our API server. For your device/emulator to connect to this local server, you must do one of the following:
        - connect your computer and mobile device to the same wifi network. modify the `LOCAL_IP` variable to match your computer's local network ipv4 address
@@ -18,7 +18,7 @@ A truly cross-platform app. Build UI screens, components, logic, and even backen
 This monorepo contains 2 types of apps: `web` (Next.js) and `native` (Expo/react-native). They both import shared code from the `app` package.
 
 - `packages/app/` - shared UI screens, components, and logic
-  - `provider/index.tsx` - React "providers" that wrap your entire app. includes `NativeBase` theme, `react-query` context, etc. 
+  - `provider/index.tsx` - React "providers" that wrap your entire app. includes `NativeBase` theme, `react-query` context, etc.
 - `packages/web/` - Next.js project. Supports isomorphic rendering of our shared UI
   - `integrations/` - blitz requires that all queries & mutations be inside a directory named `integrations`, `app`, or `src`, and be within the Next.js project directory
     - `**/queries/` - blitz magic. export functions in this directory that run server-side code, but can be imported directly from frontend code e.g. `useQuery(getUser)`
@@ -43,8 +43,10 @@ This monorepo contains 2 types of apps: `web` (Next.js) and `native` (Expo/react
 - [react-query](https://react-query.tanstack.com/) - handle caching/fetching data in react. used interally by `blitz`
 
 ## Inspiration
+
 - https://github.com/GeekyAnts/nativebase-templates/tree/master/solito-universal-app-template-nativebase-typescript
 - https://github.com/nandorojo/solito/tree/9ea135e2e58bf962dad7f0371b4be0137193e281/example-monorepos/blank
 
 ## License
+
 MIT

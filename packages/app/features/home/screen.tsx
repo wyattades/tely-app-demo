@@ -1,18 +1,17 @@
-import { Link as SolitoLink } from 'solito/link';
 import {
   Center,
   HStack,
   Text,
   Heading,
-  Link,
   VStack,
   Button,
   Box,
 } from 'native-base';
 
 import { ColorModeSwitch } from 'app/components/ColorModeSwitch';
+import { Link } from 'app/components/Link';
 
-const Code: React.FC = ({ children }) => {
+const Code: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <Text fontFamily="mono" bg="gray.100" _dark={{ bg: 'blueGray.800' }}>
       {' '}
@@ -38,9 +37,9 @@ export function HomeScreen() {
             resizeMode="contain"
           />
         </AspectRatio> */}
-        <Heading size="3xl">Tely ❤️</Heading>
+        <Heading fontSize="3xl">Tely ❤️</Heading>
         <Text>
-          Env: API_BASEPATH={process.env.__NEXT_ROUTER_BASEPATH || '???'}
+          Env: API_BASEPATH={process.env.__NEXT_ROUTER_BASEPATH ?? '???'}
         </Text>
         <Text>
           Edit <Code>packages/app/home/screen.tsx</Code> and save to reload.
@@ -51,14 +50,14 @@ export function HomeScreen() {
               _light={{ color: 'gray.700' }}
               _dark={{ color: 'gray.400' }}
               underline
-              fontSize={'xl'}
+              fontSize="xl"
             >
               Example link 1
             </Text>
           </Link>
           <Text>/</Text>
           <Link href="https://example.com" isExternal>
-            <Text color="primary.500" underline fontSize={'xl'}>
+            <Text color="primary.500" underline fontSize="xl">
               Example link 2
             </Text>
           </Link>
@@ -66,11 +65,11 @@ export function HomeScreen() {
       </VStack>
       <ColorModeSwitch />
       <Box mt="6">
-        <SolitoLink href="/user/sam">
+        <Link href="/user/sam">
           <Button pointerEvents="none" variant="outline" colorScheme="coolGray">
             Open User Detail
           </Button>
-        </SolitoLink>
+        </Link>
       </Box>
     </Center>
   );

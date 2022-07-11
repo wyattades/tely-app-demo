@@ -3,6 +3,10 @@
   "compilerOptions": {
     "strictNullChecks": true,
     "noUncheckedIndexedAccess": true,
+    "strict": true,
+    "noEmit": true,
+    "incremental": true,
+    "tsBuildInfoFile": "tmp/.tsbuildinfo",
     "baseUrl": ".",
     "paths": {
       "app/*": ["./packages/app/*"],
@@ -10,5 +14,5 @@
       "web/*": ["./packages/web/*"]
     }
   },
-  "include": ["**/*.ts", "**/*.tsx"]
+  "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"]
 }

@@ -1,9 +1,10 @@
 // Docs: https://docs.expo.io/guides/customizing-metro
 
 const { getDefaultConfig } = require('expo/metro-config');
-const { mergeConfig } = require('metro-config');
+// const { mergeConfig } = require('metro-config');
 const { resolve: metroResolve } = require('metro-resolver');
 const path = require('path');
+const fs = require('fs');
 
 const projectRoot = __dirname;
 const workspaceRoot = path.resolve(__dirname, '../..');
@@ -18,9 +19,21 @@ config.resolver.nodeModulesPath = [
   path.resolve(workspaceRoot, 'node_modules'),
 ];
 
-const aliases = {
-  'next/router': path.resolve(projectRoot, 'resolvers/next/router.mjs'),
+const getAliases = (dir, aliases = {}, base = dir + '/') => {
+  const files = fs.readdirSync(dir);
+  for (const file of files) {
+    const filePath = path.join(dir, file);
+    const stat = fs.statSync(filePath);
+    if (stat.isDirectory()) {
+      getAliases(filePath, aliases, base);
+    } else {
+      aliases[filePath.replace(base, '').replace(/\.\w+$/, '')] = filePath;
+    }
+  }
+  return aliases;
 };
+
+const aliases = getAliases(path.resolve(projectRoot, 'resolvers'));
 
 config.resolver.resolveRequest = (context, moduleName, platform) => {
   for (const fromAlias in aliases) {

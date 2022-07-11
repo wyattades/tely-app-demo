@@ -1,7 +1,15 @@
 // Expo config docs: https://docs.expo.dev/versions/v45.0.0/config/app
 
-const LOCAL_IP = '192.168.0.159'; // TODO: stop hardcoding my ip
+const os = require('os');
+
+const LOCAL_IP = Object.values(os.networkInterfaces())
+  .reduce((acc, val) => acc.concat(val), [])
+  .find((a) => !a.internal && a.family === 'IPv4')?.address;
+
 const DEV_SERVER_PORT = 3000;
+
+// TODO: this isn't being set?
+process.env.NODE_ENV ||= 'development';
 
 const apiHost =
   process.env.NODE_ENV === 'development'

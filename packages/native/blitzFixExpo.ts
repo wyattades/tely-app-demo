@@ -1,4 +1,4 @@
-// TEMP fix: blitz calls `window.addEventListener` in the top-level scope, which is unsupported in `react-native`
+// TODO-blitz-bug: blitz calls `window.addEventListener` in the top-level scope, which is unsupported in `react-native`
 if (typeof window !== 'undefined') {
   if (!window.addEventListener) {
     window.addEventListener = (eventName: string) => {
@@ -12,7 +12,7 @@ if (typeof window !== 'undefined') {
   }
 
   if (!globalThis.localStorage) {
-    const memStorage = {};
+    const memStorage: Record<string, string | undefined> = {};
     globalThis.localStorage = window.localStorage || {
       getItem: (key) => {
         // console.log(`UNSUPPORTED: localStorage.getItem called "${key}"`);
